@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matador de Monstro </title>
+     <!-- Estilo -->
+     <link rel="stylesheet" href="files/min/css/style.css">
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet">
+     <!-- Estilo -->     
+</head>
+<body>
+
+        <div id="app">
+            <div class="container">
+                <div class="row panel scores">
+                    <div class="col-md-6">
+                        <div class="score">
+                            <h1>Jogador</h1>
+                            <div class="life-bar">
+                                <div class="life"
+                                    :class="[{danger: playerLife <= 20},{medium: playerLife >= 21 && playerLife <= 40}]"        
+                                    :style="{width: playerLife + '%'}"
+                                ></div>
+                            </div>
+                            <div>
+                                {{playerLife}}%
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="score">
+                            <h1>Monstro</h1>
+                            <div class="life-bar">
+                                <div class="life"
+                                :class="[{danger: monsterLife <= 20},{medium: monsterLife >= 21 && monsterLife <= 40}]"
+                                :style="{width: monsterLife + '%'}"
+                                ></div>
+                            </div>
+                            <div>
+                                {{monsterLife}}%
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+                <div v-if="hasResult" class="row panel result">
+                    <div v-if="monsterLife == 0" class="win">
+                        Você Ganhou :)
+                    </div>
+                    <div v-if="playerLife == 0" class="lose">
+                        Você perdeu :)
+                    </div>
+                </div>
+                <div class="row panel buttons">
+                    <template v-if="running">
+                        <button class="btn attack"
+                        @click="attack(false)"
+                        >Ataque</button>
+                        <button class="btn special-attack"
+                        @click="attack(true)"
+                        >Ataque Especial</button>
+                        <button class="btn heal"
+                        @click="healAndHurt"
+                        >Curar</button>
+                        <button class="btn give-up" @click="running = false">Desistir</button>
+                    </template>                    
+                    <button class="btn new-game"
+                     v-else
+                     @click="startGame"
+                     >Iniciar Jogo</button>
+                </div> 
+                <!-- Se tiver valor o array mostra essa div de logs, caso contrário, não mostra -->
+                <div 
+                v-if="logs.length"                 
+                class="row panel logs">
+                <ul>
+                    <li v-for="log in logs"
+                    class="log"
+                    :class="log.cls"
+                    >
+                        {{log.text}}
+                    </li>
+                </ul>
+                </div>
+            </div>               
+        </div>
+    
+    <!-- JS -->
+    <script src="files/min/js/all.min.js"></script>
+    <!-- JS -->
+</body>
+</html>

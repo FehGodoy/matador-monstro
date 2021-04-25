@@ -1,0 +1,125 @@
+body{
+    font-family: $fontCorpo;
+    // background-color: $corBody;
+
+    #app{
+        display: flex;
+
+        .panel{
+            padding: 20px;
+            margin: 20px 0px;
+            box-shadow: 0 2px 10px rgba($color: $preto, $alpha: 0.15);
+            color: $preto;
+            
+            .score{
+                text-align: center;
+                h1{
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    color: $preto;
+                    text-align: center;
+                }
+                .life-bar{
+                    width: 80%;
+                    height: 30px;
+                    border: 1px solid #aaa;
+                    display: flex;
+                    margin: 10px auto;
+
+                    .life{
+                        display: flex;
+                        justify-content: center;
+                        height: 100%;
+                        width: 100%;
+                        background-color: $verde;
+                        &.danger{
+                            background-color: $vermelho;
+                        }                        
+                        &.medium{
+                            background-color: $amarelo;
+                        }
+                    }
+                }
+            }
+            &.result{
+                display: flex;
+                justify-content: center;
+                font-weight: 700;
+                text-transform: uppercase;
+
+                .win{
+                    color: $verde;
+                }
+                .lose{
+                    color: $vermelho;
+                }
+            }
+            &.buttons{
+                display: flex;
+                justify-content: center;
+
+                .btn{
+                    padding: 5px 10px;
+                    margin: 0px 10px;
+                    border-radius: 5px;
+                    text-transform: uppercase;
+                    color: $branco;
+                    font-weight: 700;
+                    font-size: 16px;
+
+                    &:focus{
+                        box-shadow: none;
+                    }
+
+                    &.new-game{
+                        background-color: $azul;                       
+                    }
+
+                    &.attack{
+                        background-color: $vermelho;                       
+                    }
+
+                    &.special-attack{
+                        background-color: $laranja;
+                       
+                    }
+                    &.heal{
+                        background-color: $verdeC;                       
+                    }
+                    &.give-up{
+                        background-color: $bordaBarra;                       
+                    }
+
+                }
+            }
+            &.logs{
+
+                ul{
+                    display: flex;
+                    flex-direction: column;
+                    list-style: none;
+                    padding-left: 0;
+                    margin: 0;
+                    width: 100%;
+
+                    li{
+                        display: flex;
+                        justify-content: center;
+                        margin: 4px 0px;
+                        padding: 3px 0px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        border-radius:3px;
+                        color: $branco;
+                        &.monster{
+                            background-color: $monsterColor;
+                        }
+                        &.player{
+                            background-color: $playerColor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

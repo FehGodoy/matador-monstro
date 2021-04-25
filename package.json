@@ -1,0 +1,18 @@
+{
+  "name": "projeto-01-monstro",
+  "version": "1.0.0",
+  "description": "Matador de monstro",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "gulp"
+  },
+  "author": "Felipe Godoy",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.14",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.1.0",
+    "gulp-terser": "^2.0.1"
+  }
+}
